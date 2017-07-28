@@ -4,7 +4,7 @@ module.exports = function(app, router) {
      var employeeController = require('../rest_controller/employee_controller')
 
 	// api routes
-    router.post('/addemployee', employeeController.addEmployee),
+    router.post('/employee', employeeController.addEmployee),
     router.post('/login', loginController.getAuthToken),
 
 

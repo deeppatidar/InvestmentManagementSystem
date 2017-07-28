@@ -1,15 +1,32 @@
 var con = require('../../db/connection/connection');
+var sql_queries = require('../../db/database_queries/sql_queries');
 
 module.exports = {
-		getEmployeeService: function(reqData, callback) {
-            //var req_query = "INSERT INTO employee (email, username, pass) VALUES ('sshubham@gmail.com', 'sTom B. Erichsen', 'sSkagen 21');"
-            var req_query = "select * from employee;"
-            con.query(req_query,function(err, result) {
+
+        addEmployeeService: function(reqData, callback) {
+            con.query(sql_queries.addEmployee(reqData.body), function(err, result) {
+            if(err) {
+                return callback(err)
+            }
+                return callback(result)
+            });
+        },
+
+        getAuthTokenService: function(reqData, callback) {
+            con.query(sql_queries.getAuthToken(reqData.body.username), function(err, authToken) {
+            if(err) {
+                return callback(err)
+            }
+                return callback(null, authToken)
+            });
+        },
+
+        getEmployeeService: function(reqData, callback) {
+            con.query(sql_queries.getEmployees(), function(err, result) {
             if(err) {
                 return callback(err)
             }
                 return callback(null, result)
             });
-        }
-
+        },
     }

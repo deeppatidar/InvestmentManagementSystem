@@ -14,11 +14,11 @@ module.exports = {
         },
 
         getAuthTokenService: function(reqData, callback) {
-            con.query(sql_queries.getAuthToken(reqData.email), function(err, authToken) {
+            con.query(sql_queries.getAuthToken(reqData.email), function(err, result) {
             if(err) {
                 return callback(err)
             }
-                return callback(null, authToken)
+                return callback(null, result[0])
             });
         },
 

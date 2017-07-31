@@ -3,7 +3,6 @@
  */
 var empService = require('../services/employee_service')
 
-
 module.exports.addEmployee = function(req, res) {
     empService.addEmployeeService(req.body,function(err, employeeData) {
         if (err) {
@@ -28,6 +27,17 @@ module.exports.getEmployee = function(req, res) {
 
 module.exports.removeEmployee = function(req, res) {
     empService.removeEmployeeService(req.params,function(err, employeeData) {
+        if (err) {
+            res.send(err);
+        } else {
+            res.send(employeeData);
+        }
+    });
+
+}
+
+module.exports.updateEmployee = function(req, res) {
+    empService.updateEmployeeService(req.body,function(err, employeeData) {
         if (err) {
             res.send(err);
         } else {

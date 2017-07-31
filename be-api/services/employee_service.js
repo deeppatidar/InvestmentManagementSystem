@@ -39,4 +39,14 @@ module.exports = {
                 return callback(null, result)
             });
         },
+
+        updateEmployeeService: function(reqData, callback) {
+            //"'"+reqData.declareData+"'", "'"+reqData.q1+"'", "'"+reqData.q2+"'", "'"+reqData.q3+"'", "'"+reqData.q4+"'", "'"+reqData.email+"'"
+            con.query("update employee set dec_invest = ?, quater1=?,  quater2=?,  quater3=?,  quater4=? WHERE email = ?", [JSON.stringify(reqData.declareData), JSON.stringify(reqData.q1), JSON.stringify(reqData.q2), JSON.stringify(reqData.q3), JSON.stringify(reqData.q4), reqData.email], function(err, result) {
+            if(err) {
+                return callback(err)
+            }
+                return callback(null, result)
+            });
+        },
     }

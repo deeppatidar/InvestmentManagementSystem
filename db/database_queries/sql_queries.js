@@ -18,3 +18,7 @@ module.exports.getEmployee = function(email) {
 module.exports.removeEmployee = function(email) {
         return "delete from employee where email = " + "'"+ email + "'";
     };
+
+module.exports.updateEmployee = function(email, declareData, q1, q2, q3, q4) {
+        return "update employee set dec_invest = ?, quater1=?,  quater2=?,  quater3=?,  quater4=? WHERE email = " + "'"+ email + "'";
+    };

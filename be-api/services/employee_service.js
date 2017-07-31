@@ -41,12 +41,21 @@ module.exports = {
         },
 
         updateEmployeeService: function(reqData, callback) {
-            //"'"+reqData.declareData+"'", "'"+reqData.q1+"'", "'"+reqData.q2+"'", "'"+reqData.q3+"'", "'"+reqData.q4+"'", "'"+reqData.email+"'"
-            con.query("update employee set dec_invest = ?, quater1=?,  quater2=?,  quater3=?,  quater4=? WHERE email = ?", [JSON.stringify(reqData.declareData), JSON.stringify(reqData.q1), JSON.stringify(reqData.q2), JSON.stringify(reqData.q3), JSON.stringify(reqData.q4), reqData.email], function(err, result) {
+            con.query("update employee set dec_invest = ?, quater1=?,  quater2=?,  quater3=?,  quater4=? WHERE email = ?", [objToString(reqData.declareData), objToString(reqData.q1), objToString(reqData.q2), objToString(reqData.q3), objToString(reqData.q4), reqData.email], function(err, result) {
             if(err) {
                 return callback(err)
             }
                 return callback(null, result)
             });
         },
+    }
+
+    function objToString (obj) {
+        var str = '';
+        for (var p in obj) {
+            if (obj.hasOwnProperty(p)) {
+                str += p + ':' + obj[p] + ',';
+            }
+        }
+        return '{'+str +'}';
     }

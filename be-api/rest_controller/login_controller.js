@@ -3,7 +3,7 @@ var jwt=require('jsonwebtoken');
 var empService = require('../services/employee_service');
 
 function createToken(user) {
-    return jwt.sign({foo: user},process.env.SECRET_KEY,{expiresIn: 60});
+    return jwt.sign({foo: user},process.env.SECRET_KEY,{expiresIn: 1800});
 }
 
 module.exports.getAuthToken = function(req, res) {

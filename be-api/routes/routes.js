@@ -26,6 +26,7 @@ module.exports = function(app, router) {
 
 
     router.get('/employee', employeeController.getEmployee)
+    router.delete('/employee/:email', employeeController.removeEmployee)
 
 	app.use('/api', router)
 }

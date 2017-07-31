@@ -5,7 +5,7 @@ module.exports = {
 
         addEmployeeService: function(reqData, callback) {
             var post  = {email: reqData.email, username: reqData.username, pass: reqData.password};
-            con.query('insert into employee set ?', post, function(err, result) {
+            con.query(sql_queries.addEmployee, post, function(err, result) {
             if(err) {
                 return callback(err)
             }
@@ -24,6 +24,15 @@ module.exports = {
 
         getEmployeeService: function(reqData, callback) {
             con.query(sql_queries.getEmployees(), function(err, result) {
+            if(err) {
+                return callback(err)
+            }
+                return callback(null, result)
+            });
+        },
+
+        removeEmployeeService: function(reqData, callback) {
+            con.query(sql_queries.removeEmployee(reqData.email), function(err, result) {
             if(err) {
                 return callback(err)
             }

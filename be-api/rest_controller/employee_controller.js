@@ -26,3 +26,14 @@ module.exports.getEmployee = function(req, res) {
     });
 
 }
+
+module.exports.removeEmployee = function(req, res) {
+    empService.removeEmployeeService(req.params,function(err, employeeData) {
+        if (err) {
+            res.send(err);
+        } else {
+            res.send(employeeData);
+        }
+    });
+
+}

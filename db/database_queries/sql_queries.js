@@ -14,3 +14,7 @@ module.exports.addEmployee = function() {
 module.exports.getEmployee = function(email) {
         return "select * from employee where email = " + email;
     };
+
+module.exports.removeEmployee = function(email) {
+        return "delete from employee where email = " + "'"+ email + "'";
+    };

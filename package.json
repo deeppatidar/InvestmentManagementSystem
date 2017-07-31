@@ -7,15 +7,16 @@
   },
   "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV=staging node index.js"
+    "start": "NODE_ENV=staging nodemon index.js"
   },
   "dependencies": {
-      "body-parser": "^1.17.2",
-       "ejs": "2.5.6",
-       "express": "4.15.2",
-       "jsonwebtoken": "^7.4.1",
-       "morgan": "^1.8.2",
-       "mysql": "^2.13.0"
+    "body-parser": "^1.17.2",
+    "ejs": "2.5.6",
+    "express": "4.15.2",
+    "jsonwebtoken": "^7.4.1",
+    "morgan": "^1.8.2",
+    "mysql": "^2.13.0",
+    "nodemon": "^1.11.0"
   },
   "repository": {
     "type": "git",
@@ -26,5 +27,8 @@
     "heroku",
     "express"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
 }

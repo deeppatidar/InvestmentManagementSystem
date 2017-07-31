@@ -1,1 +1,1 @@
-web: NODE_ENV=staging node index.js
+web: NODE_ENV=staging nodemon index.js

@@ -48,6 +48,33 @@ module.exports = {
                 return callback(null, result)
             });
         },
+
+        getEmployeePassService: function(reqData, callback) {
+            con.query(sql_queries.getEmployeePass(reqData.email), function(err, result) {
+            if(err) {
+                return callback(err)
+            }
+                return callback(null, result[0].pass)
+            });
+        },
+
+        changeEmployeePassService: function(reqData, callback) {
+            con.query("update employee set pass=? where email = ?", [reqData.new_password, reqData.email], function(err, result) {
+            if(err) {
+                return callback(err)
+            }
+                return callback(null, result)
+            });
+        },
+
+        checkEmployeeEmailService: function(reqData, callback) {
+            con.query(sql_queries.getEmployee(reqData.email), function(err, result) {
+            if(err) {
+                return callback(err)
+            }
+                return callback(null, result)
+            });
+        },
     }
 
     function objToString (obj) {

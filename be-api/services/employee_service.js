@@ -75,6 +75,15 @@ module.exports = {
                 return callback(null, result)
             });
         },
+
+        getEmployeeByEmail: function(reqData, callback) {
+            con.query(sql_queries.getEmployee(reqData.email), function(err, result) {
+            if(err) {
+                return callback(err)
+            }
+                return callback(null, result)
+            });
+        },
     }
 
     function objToString (obj) {

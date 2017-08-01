@@ -10,7 +10,6 @@ module.exports.addEmployee = function(req, res) {
         }
 
         else if (employeeData.length != 0) {
-        console.log("user does not exist")
             res.send({
                  success:false,
                  rcode : 402,
@@ -56,7 +55,18 @@ module.exports.updateEmployee = function(req, res) {
         if (err) {
             res.send(err);
         } else {
-            res.send(employeeData);
+                empService.getEmployeeByEmail(req.body,function(err, employeeData) {
+                if (err) {
+                    res.send(err);
+                } else {
+                    res.send({
+                      success: true,
+                      rcode : 200,
+                      data: employeeData,
+                      message: "Employee updated successfully"
+                    });
+                }
+            });
         }
     });
 

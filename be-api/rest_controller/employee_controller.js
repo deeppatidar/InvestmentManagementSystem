@@ -2,6 +2,8 @@
  * Employee Controller.
  */
 var empService = require('../services/employee_service')
+var response = require('../services/api_response')
+var appException = require('../app_util/exceptions')
 
 module.exports.addEmployee = function(req, res) {
     empService.checkEmployeeEmailService(req.body,function(err, employeeData) {
@@ -21,19 +23,30 @@ module.exports.addEmployee = function(req, res) {
             if (err) {
                 res.send(err);
             }  else {
-                res.send(employeeData);
+                  response.successResponse(req, res, null, "Employee added successfully")
             }
           });
         }
     });
 }
 
-module.exports.getEmployee = function(req, res) {
+module.exports.getEmployees = function(req, res) {
     empService.getEmployeeService(req.body,function(err, employeeData) {
         if (err) {
             res.send(err);
         } else {
-            res.send(employeeData);
+             response.successResponse(req, res, employeeData, null)
+        }
+    });
+
+}
+
+module.exports.getEmployee = function(req, res) {
+    empService.getEmployeeByEmail(req.params,function(err, employeeData) {
+        if (err) {
+            res.send(err);
+        } else {
+            response.successResponse(req, res, employeeData, null)
         }
     });
 
@@ -44,7 +57,7 @@ module.exports.removeEmployee = function(req, res) {
         if (err) {
             res.send(err);
         } else {
-            res.send(employeeData);
+            response.successResponse(req, res, null, "Employee removed successfully")
         }
     });
 
@@ -59,12 +72,7 @@ module.exports.updateEmployee = function(req, res) {
                 if (err) {
                     res.send(err);
                 } else {
-                    res.send({
-                      success: true,
-                      rcode : 200,
-                      data: employeeData,
-                      message: "Employee updated successfully"
-                    });
+                    response.successResponse(req, res, employeeData, "Employee updated successfully")
                 }
             });
         }
@@ -98,11 +106,7 @@ module.exports.changeEmployeePass = function(req, res) {
                     res.send(err);
                 }
                 else {
-                    res.send({
-                      success: true,
-                      rcode : 200,
-                      message: "Password changed successfully"
-                    });
+                    response.successResponse(req, res, null, "Password changed successfully")
                 }
             });
 

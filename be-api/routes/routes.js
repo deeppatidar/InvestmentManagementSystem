@@ -33,7 +33,8 @@ module.exports = function(app, router) {
     });
 
 
-    router.get('/employee', employeeController.getEmployee)
+    router.get('/employees', employeeController.getEmployees)
+    router.get('/employee/:email', employeeController.getEmployee)
     router.delete('/employee/:email', employeeController.removeEmployee)
     router.put('/employee', employeeController.updateEmployee)
     router.put('/employee/change_password', employeeController.changeEmployeePass)

@@ -9,7 +9,7 @@ module.exports = {
             if(err) {
                 return callback(err)
             }
-                return callback(result)
+                return callback(null, result)
             });
         },
 

@@ -14,13 +14,21 @@ module.exports = function(app, router) {
         if(token){
             jwt.verify(token,process.env.SECRET_KEY,function(err,ress){
                 if(err){
-                    res.status(500).send('Token Invalid');
+                    res.send({
+                     success:false,
+                     rcode : 402,
+                     message: "Token invalid"
+                    });
                 }else{
                     next();
                 }
             })
         }else{
-            res.send('Please send a token')
+            res.send({
+                 success:false,
+                 rcode : 402,
+                 message: "Please send token"
+                });
         }
     });
 

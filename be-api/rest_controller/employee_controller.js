@@ -10,6 +10,7 @@ module.exports.addEmployee = function(req, res) {
         }
 
         else if (employeeData.length != 0) {
+        console.log("user does not exist")
             res.send({
                  success:false,
                  rcode : 402,

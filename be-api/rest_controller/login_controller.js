@@ -17,7 +17,7 @@ module.exports.getAuthToken = function(req, res) {
             if (err) {
                 res.send(err);
             } else if(result && result.pass == req.body.password){
-                response.successResponse(req, res, createToken(req.headers.userName), null)
+                response.authResponse(req, res, createToken(req.headers.userName), null)
             } else if (result && result.pass != req.body.password) {
                 res.send({
                   success: false,

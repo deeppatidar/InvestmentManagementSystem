@@ -93,5 +93,6 @@ module.exports = {
                 str += p + ':' + obj[p] + ',';
             }
         }
+        str = str.replace(/.$/," ");
         return '{'+str +'}';
     }
